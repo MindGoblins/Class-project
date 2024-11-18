@@ -38,7 +38,7 @@ export function Signin ( props ) {
                                 <Form.Label className="mt-3">Password</Form.Label>
                                 <Form.Control 
                                     type="password" 
-                                    placeholder="minimum 6 characters" 
+                                    placeholder="minimum 8 characters" 
                                     name="password"
                                 />
                             </Form.Group>
