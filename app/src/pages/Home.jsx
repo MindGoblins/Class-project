@@ -38,7 +38,11 @@ export function Home ( props ) {
         return(
             <Col md={3}>
                 <Card style={{ width: '15rem'}}>
-                    <Card.Img variant ="top" src={'/book_covers/' + book.Cover}/>
+                    <Card.Img 
+                    variant ="top" 
+                    src={'/book_covers/' + book.Cover}
+                    style={{maxWidth:"100%"}}
+                    className="book-cover"/>
                     <Card.Body>
                         <Card.Title>{ book.Title }</Card.Title>
                         <Button as={Link} variant="info" 
