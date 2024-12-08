@@ -6,6 +6,7 @@ import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { Signup } from './pages/Signup';
 import { BookDetail } from './pages/BookDetail';
+import { ListLoans } from './pages/admin/ListLoans';
 import { Home } from './pages/Home';
 import { Logout } from './pages/Logout';
 import { Signin } from './pages/Signin';
@@ -21,7 +22,7 @@ import './App.css'
 
 function App() {
   const [auth, setAuth] = useState()
-
+  const [admin, setAdmin] = useState(false)
   const FirebaseApp = initializeApp(firebaseConfig)
   const FirebaseAuth = getAuth(FirebaseApp)
   const Firestore = getFirestore(FirebaseApp)
@@ -38,18 +39,18 @@ function App() {
   return (
     <>
       <AuthContext.Provider value={auth} >
-      <FirestoreContext.Provider value={Firestore} >
-        <Header />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/signup" element={<Signup authapp={FirebaseAuth} />} />
-          <Route path="/logout" element={ <Logout authapp={FirebaseAuth} /> } />
-          <Route path="/signin" element={<Signin authapp={FirebaseAuth} />} />
-          <Route path="/detail/:bookId" element={<BookDetail/>} />
-          <Route path="/admin/AddBook" element={ <AddBook/> } />
-          
-        </Routes>
-        <Footer />
+      <FirestoreContext.Provider value={Firestore}>
+          <Header mode={ admin } />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/signup" element={<Signup authapp={FirebaseAuth} />} />
+            <Route path="/logout" element={<Logout authapp={FirebaseAuth} />} />
+            <Route path="/signin" element={<Signin authapp={FirebaseAuth} admin={ setAdmin } />} />
+            <Route path="/detail/:bookId" element={<BookDetail /> } />
+            <Route path="/admin/addbook" element={ <AddBook mode={admin} /> } />
+            <Route path="/admin/listloans" element={ <ListLoans mode={admin} /> } />
+          </Routes>
+          <Footer />
         </FirestoreContext.Provider>
       </AuthContext.Provider>
     </>

@@ -34,10 +34,10 @@ export function Home ( props ) {
     }, [booksLoaded])
 
 
-    const Books = bookdata.map( (book) => {
+    const Books = bookdata.map( (book, key) => {
         return(
-            <Col md={3}>
-                <Card style={{ width: '15rem'}}>
+            <Col key={ key }>
+                <Card style={{ width: '25rem'}}>
                     <Card.Img 
                     variant ="top" 
                     src={'/book_covers/' + book.Cover}

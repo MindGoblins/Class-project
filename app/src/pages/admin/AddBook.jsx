@@ -4,10 +4,10 @@ import Col from "react-bootstrap/Col"
 import Form from "react-bootstrap/Form"
 import Button from "react-bootstrap/Button";
 import Alert from "react-bootstrap/Alert";
-
+import { useNavigate } from "react-router-dom";
 import { FirestoreContext } from "../../contexts/FirestoreContext";
 import { collection, addDoc } from "firebase/firestore";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 
 
 
@@ -18,7 +18,13 @@ export function AddBook( props ) {
     let alertType = 'success'
 
     const db = useContext( FirestoreContext )
+    const navigate = useNavigate()
 
+    useEffect(()=> {
+        if (props.mode == false){
+            
+        }
+    }, [props.mode])
     const createBook = async (event) => {
         event.preventDefault()
         const fd = new FormData(event.target)
